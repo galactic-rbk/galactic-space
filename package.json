@@ -1,0 +1,19 @@
+{
+  "name": "shortly-deploy",
+  "version": "1.0.0",
+  "description": "Learn all about (the challenges of) deployment",
+  "author": "Hack Reactor <curriculum.team@hackreactor.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.16.0",
+    "bookshelf": "^0.9.1",
+    "chai": "^3.5.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "express-partials": "^0.2.0",
+    "express-session": "^1.13.0"
+  }
+}
