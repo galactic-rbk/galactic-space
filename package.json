@@ -5,6 +5,8 @@
   "author": "Hack Reactor <curriculum.team@hackreactor.com>",
   "license": "UNLICENSED",
   "private": true,
+
+  
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.3.4",
@@ -12,6 +14,7 @@
     "bookshelf": "^0.9.1",
     "chai": "^3.5.0",
     "cookie-parser": "^1.4.3",
+    "mongoose": "^4.6.4",
     "express": "^4.13.4",
     "express-partials": "^0.2.0",
     "express-session": "^1.13.0"
