@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var planetSchema = new mongoose.Schema({
+	id: Number,
 	name: String , 
 	info : String,
 	Discovery:String,

@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/SolarSystemPlanets');
+mongoose.connect('mongodb://localhost/Solar');
 
 
 var app = express();
