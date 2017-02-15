@@ -6,12 +6,12 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/Solar');
+mongoose.connect('mongodb://cozmo:hohoasadad@ds143449.mlab.com:43449/nodejsapp');
 
 
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + "./client"));
+app.use(express.static(__dirname + "/client"));
 
 app.use('/api/planets', planetRouter);
 
