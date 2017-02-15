@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://cozmo:hohoasadad@ds143449.mlab.com:43449/nodejsapp');
+mongoose.connect('mongodb://localhost/Solar');
 
 
 app.use(bodyParser.json());
