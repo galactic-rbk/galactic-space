@@ -1,272 +1,177 @@
 <!DOCTYPE html>
 
-<html  ng-app="myapp" lang="en" class="no-js">
+<html  ng-app="space" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Galactic Space</title>
+
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/default.css" />
   <script type="text/javascript" src="js/jquery.planetarium.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="css/planetarium.css" />
-
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/planetarium.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+   <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/controller/app.js"></script>
 </head>
+
 <body>
-  <div class="container" ng-controller="appCtlr">
-     <div class="header">
-        <h1>Galactic Space</h1>	
+  <div class="container" ng-controller="MainController">
+   <div class="header">
+    <h1>Galactic Space</h1>	
+  </div>
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Galactic space</a>
     </div>
-    <div class="menu">
-        <a class="active" href="index.html">Solar System</a>
-        <a href="index.html">Blog</a>
-    </div>
-
-    <div class="sun" ng-click="info(1)"><img src="img/580b585b2edbce24c47b2714.png" style="width:90%;height: 90%;" >
-    </div>
-    <!-- <div style="height:50%;width:50%;margin-left: 20%"></div> -->
-
-    <div ng-click="info(2)" style="margin-left:-60%" data-ptr-autospin="17590ms" data-ptr-angle="0deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="38x38" data-ptr-pattern="img/mercury.jpg" class="jupiter planet" ng-click="info(2)"></div>
-    <ul style="font-size: 20px"><li>name : Mercury</li>
-        <li>info : The closest planet to the sun, Mercury is only a bit larger than Earth's moon. Its day side is scorched by the sun and can reach 840 degrees
-            Fahrenheit (450 Celsius), but on the night side, temperatures drop to hundreds of degrees below freezing. Mercury has virtually no atmosphere to absorb meteor impacts, so its surface is pockmarked with craters, just like the moon. Over its four-year mission, NASA's MESSENGER spacecraft has revealed views of the planet that have challenged astronomers' expectations. </li>
-            <li> Discovery : Known to the ancients and visible to the naked eye</li>
-            <li> NamedFor": Messenger of the Roman gods</li>
-            <li> Diameter": 3,031 miles (4,878 km)</li>
-            <li> Orbit": 88 Earth days</li>
-            <li> Day": 58.6 Earth days</li>
-        </ul>
-
-        <!-- <div style="height:50%;width:50%;margin-left: 20%"></div> -->
-
-        <div ng-click="info(3)" style="margin-left:60%" data-ptr-autospin="11675ms" data-ptr-angle="-3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="95x95" data-ptr-pattern="img/venus.jpg" class="jupiter planet"></div>
-        <ul style="font-size: 20px">
-           <li> name : Venus</li>
-           info :"The second planet from the sun, Venus is terribly hot, even hotter than Mercury. The atmosphere is toxic. The pressure at the surface would crush and kill you. Scientists describe Venus’ situation as a runaway greenhouse effect. Its size and structure are similar to Earth, Venus' thick, toxic atmosphere traps heat in a runaway greenhouse effect. Oddly, Venus spins slowly in the opposite direction of most planets.The Greeks believed Venus was two different objects — one in the morning sky and another in the evening. Because it is often brighter than any other object in the sky — except for the sun and moon — Venus has generated many UFO reports.
-           <li>Discovery : Known to the ancients and visible to the naked eye"</li>
-           <li>NamedFor : Roman goddess of love and beauty"</li>
-           <li>Diameter : 7,521 miles (12,104 km) </li>
-           <li>Orbit : 225 Earth days </li>
-           <li>Day : 241 Earth days"</li>
-       </ul>
-
-       <!-- <div style="height:50%;width:50%;margin-left: 20%"></div> -->
-
-       <div ng-click="info(4)" style="margin-left:-60%" data-ptr-autospin="4800ms" data-ptr-angle="23.5deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/earth.jpg" class="jupiter planet"></div>
-       <ul style="font-size: 18px">
-        <li> name : Earth </li>
-        <li>info : The third planet from the sun, Earth is a waterworld, with two-thirds of the planet covered by ocean. It’s the only world known to harbor life. Earth’s atmosphere is rich in life-sustaining nitrogen and oxygen. Earth's surface rotates about its axis at 1,532 feet per second (467 meters per second) — slightly more than 1,000 mph (1,600 kph) — at the equator. The planet zips around the sun at more than 18 miles per second (29 km per second).</li>
-        <li>Diameter : 7,926 miles (12,760 km)</li>
-        <li>Orbit : 365.24 days</li>
-        <li>Day : 23 hours, 56 minutes</li>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Solar System</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="index2.html" >Posts</a></li>
     </ul>
-    <!-- <div style="height:50%;width:50%;margin-left: 20%"></div> -->
+  </div>
+</nav>
 
-    <div ng-click="info(5)" style="margin-left:60%" data-ptr-autospin="4900ms" data-ptr-angle="25deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="53x53" data-ptr-pattern="img/mars.jpg" class="jupiter planet"></div>
-    <ul style="font-size: 18px">
-     <li>name : Mars </li>
-     <li>info : The fourth planet from the sun, is a cold, dusty place. The dust, an iron oxide, gives the planet its reddish cast. Mars shares similarities with Earth: It is rocky, has mountains and valleys, and storm systems ranging from localized tornado-like dust devils to planet-engulfing dust storms. It snows on Mars. And Mars harbors water ice. Scientists think it was once wet and warm, though today it’s cold and desert-like. Mars' atmosphere is too thin for liquid water to exist on the surface for any length of time. Scientists think ancient Mars would have had the conditions to support life, and there is hope that signs of past life — possibly even present biology — may exist on the Red Planet.</li>
-     <li>Discovery : Known to the ancients and visible to the naked eye</li>
-     <li>NamedFor : Roman god of war</li>
-     <li>Diameter : 4,217 miles (6,787 km)</li>
-     <li>Orbit : 687 Earth days</li>
-     <li>Day : Just more than one Earth day (24 hours, 37 minutes)</li>
- </ul>
 
-         <!-- <div style="height:50%;width:50%;margin-left: 20%"></div>
-     -->
-     <div ng-click="info(6)" style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="300x300" data-ptr-pattern="img/Jupiter.jpg" class="jupiter planet"></div>
-     <ul style="font-size: 18px">
-       <li> name : Jupiter</li>
-       <li>info : The fifth planet from the sun, Jupiter is huge and is the most massive planet in our solar system. It’s a mostly gaseous world, mostly hydrogen and helium. Its swirling clouds are colorful due to different types of trace gases. A big feature is the Great Red Spot, a giant storm which has raged for hundreds of years. Jupiter has a strong magnetic field, and with dozens of moons, it looks a bit like a miniature solar system.</li>
-       <li>Discovery : Known to the ancients and visible to the naked eye</li>
-       <li>NamedFor : Ruler of the Roman gods</li>
-       <li>Diameter : 86,881 miles (139,822 km)</li>
-       <li>Orbit : 11.9 Earth years</li>
-       <li>Day : 9.8 Earth hours</li>
+  <div class="sun"><img src="img/580b585b2edbce24c47b2714.png" style="width:90%;height: 90%;" >
+  </div>
+
+
+  <div style="margin-left:-60%" data-ptr-autospin="17590ms" data-ptr-angle="0deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="38x38" data-ptr-pattern="img/mercury.jpg" class="jupiter planet" ng-click="info(2)"></div>
+  <ul class = "text" >
+  <br>
+  <p><b>name : </b> Mercury</p>
+    <p><b>info :</b> The closest planet to the sun, Mercury is only a bit larger than Earth's moon. Its day side is scorched by the sun and can reach 840 degrees
+      Fahrenheit (450 Celsius), but on the night side, temperatures drop to hundreds of degrees below freezing. Mercury has virtually no atmosphere to absorb meteor impacts, so its surface is pockmarked with craters, just like the moon. Over its four-year mission, NASA's MESSENGER spacecraft has revealed views of the planet that have challenged astronomers' expectations. </p>
+      <p> <b>Discovery :</b> Known to the ancients and visible to the naked eye</p>
+      <p> <b>Named For:</b> Messenger of the Roman gods</p>
+      <p> <b>Diameter:</b> 3,031 miles (4,878 km)</p>
+      <p> <b>Orbit:</b> 88 Earth days</p>
+      <p> <b>Day:</b> 58.6 Earth days</p>
+        <br>
+    </ul>
+
+
+    <div style="margin-left:60%" data-ptr-autospin="11675ms" data-ptr-angle="-3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="95x95" data-ptr-pattern="img/venus.jpg" class="jupiter planet"></div>
+    <ul class = "text" >
+    <br>
+     <p> <b>name :</b> Venus .</p>
+     <p><b>info : </b> The second planet from the sun, Venus is terribly hot, even hotter than Mercury. The atmosphere is toxic. The pressure at the surface would crush and kill you. Scientists describe Venus’ situation as a runaway greenhouse effect. Its size and structure are similar to Earth, Venus' thick, toxic atmosphere traps heat in a runaway greenhouse effect. Oddly, Venus spins slowly in the opposite direction of most planets.The Greeks believed Venus was two different objects — one in the morning sky and another in the evening. Because it is often brighter than any other object in the sky — except for the sun and moon — Venus has generated many UFO reports.
+     <p> <b>Discovery :</b> Known to the ancients and visible to the naked eye.</p>
+     <p><b>Named For :</b> Roman goddess of love and beauty.</p>
+     <p><b>Diameter :</b> 7,521 miles (12,104 km). </p>
+     <p><b>Orbit :</b> 225 Earth days. </p>
+     <p><b>Day :</b> 241 Earth days.</p>
+       <br>
    </ul>
 
-   <!-- <div style="height:50%;width:50%;margin-left: 20%"></div> -->
+  
 
-   <div ng-click="info(7)" style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-size="200x200" data-ptr-pattern="img/saturn2.png" data-ptr-ring="true" data-ptr-ringColor="linear-gradient(#b77138,grey,#513f00)" data-ptr-ringAngle= "-18deg" class="saturn planet"></div>
-   <ul  style="font-size: 18px">
-    <li> name : Uranus</li>
-    <li>info" :"The seventh planet from the sun, Uranus is an oddball. It’s the only giant planet whose equator is nearly at right angles to its orbit — it basically orbits on its side. Astronomers think the planet collided with some other planet-size object long ago, causing the tilt. The tilt causes extreme seasons that last 20-plus years, and the sun beats down on one pole or the other for 84 Earth-years. Uranus is about the same size as Neptune. Methane in the atmosphere gives Uranus its blue-green tint. It has numerous moons and faint rings.</li>
-    <li>Discovery : 1781 by William Herschel (was thought previously to be a star)</li>
-    <li>NamedFor : Personification of heaven in ancient myth</li>
-    <li>Diameter : 31,763 miles (51,120 km)</li>
-    <li>Orbit : 84 Earth years</li>
-    <li>Day : 18 Earth hours</li>
-</ul>
+   <div  style="margin-left:-60%" data-ptr-autospin="4800ms" data-ptr-angle="23.5deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/earth.jpg" class="jupiter planet"></div>
+   <ul class = "text">
+   <br>
+    <p> <b>name :</b> Earth. </p>
+    <p><b>info :</b> The third planet from the sun, Earth is a waterworld, with two-thirds of the planet covered by ocean. It’s the only world known to harbor life. Earth’s atmosphere is rich in life-sustaining nitrogen and oxygen. Earth's surface rotates about its axis at 1,532 feet per second (467 meters per second) — slightly more than 1,000 mph (1,600 kph) — at the equator. The planet zips around the sun at more than 18 miles per second (29 km per second).</p>
+    <p><b>Diameter :</b> 7,926 miles (12,760 km)</p>
+    <p><b>Orbit :</b> 365.24 days</p>
+    <p><b>Day :</b> 23 hours, 56 minutes</p>
+      <br>
+  </ul>
 
-<div style="height:50%;width:50%;margin-left: 20%"></div>
 
-<div ng-click="info(8)" style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="98deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/uranus.png" class="jupiter planet"></div>
-<ul style="font-size: 18px">
- <li> name : Neptune</li>
- <li>info : The eighth planet from the sun, Neptune is known for strong winds — sometimes faster than the speed of sound. Neptune is far out and cold. The planet is more than 30 times as far from the sun as Earth. It has a rocky core. Neptune was the first planet to be predicted to exist by using math, before it was detected. Irregularities in the orbit of Uranus led French astronomer Alexis Bouvard to suggest some other might be exerting a gravitational tug. German astronomer Johann Galle used calculations to help find Neptune in a telescope. Neptune is about 17 times as massive as Earth.</li>
- <li>Discovery : 1846</li>
- <li>NamedFor : Roman god of water</li>
- <li>Diameter : 30,775 miles (49,530 km)</li>
- <li>Orbit : 165 Earth years</li>
- <li>Day : 19 Earth hours</li>
-</ul>
+  <div  style="margin-left:60%" data-ptr-autospin="4900ms" data-ptr-angle="25deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="53x53" data-ptr-pattern="img/mars.jpg" class="jupiter planet"></div>
+  <ul class = "text" >
+  <br>
+   <p><b>name :</b> Mars </p>
+   <p><b>info :</b> The fourth planet from the sun, is a cold, dusty place. The dust, an iron oxide, gives the planet its reddish cast. Mars shares similarities with Earth: It is rocky, has mountains and valleys, and storm systems ranging from localized tornado-like dust devils to planet-engulfing dust storms. It snows on Mars. And Mars harbors water ice. Scientists think it was once wet and warm, though today it’s cold and desert-like. Mars' atmosphere is too thin for liquid water to exist on the surface for any length of time. Scientists think ancient Mars would have had the conditions to support life, and there is hope that signs of past life — possibly even present biology — may exist on the Red Planet.</p>
+   <p><b>Discovery :</b> Known to the ancients and visible to the naked eye.</p>
+   <p><b>Named For :</b> Roman god of war</p>
+   <p><b>Diameter :</b> 4,217 miles (6,787 km)</p>
+   <p><b>Orbit :</b> 687 Earth days</p>
+   <p><b>Day :</b> Just more than one Earth day (24 hours, 37 minutes)</p>
+     <br>
+ </ul>
+
+       
+       <div  style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="300x300" data-ptr-pattern="img/Jupiter.jpg" class="jupiter planet"></div>
+       <ul  class = "text" >
+       <br>
+         <p> <b>name :</b> Jupiter</p>
+         <p><b>info :</b> The fifth planet from the sun, Jupiter is huge and is the most massive planet in our solar system. It’s a mostly gaseous world, mostly hydrogen and helium. Its swirling clouds are colorful due to different types of trace gases. A big feature is the Great Red Spot, a giant storm which has raged for hundreds of years. Jupiter has a strong magnetic field, and with dozens of moons, it looks a bit like a miniature solar system.</p>
+         <p><b>Discovery :</b> Known to the ancients and visible to the naked eye</p>
+         <p><b>Named For :</b> Ruler of the Roman gods</p>
+         <p><b>Diameter :</b> 86,881 miles (139,822 km)</p>
+         <p><b>Orbit :</b> 11.9 Earth years</p>
+         <p><b>Day :</b> 9.8 Earth hours</p>
+           <br>
+       </ul>
+
+    
+       <div  style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-size="200x200" data-ptr-pattern="img/saturn2.png" data-ptr-ring="true" data-ptr-ringColor="linear-gradient(#b77138,grey,#513f00)" data-ptr-ringAngle= "-18deg" class="saturn planet"></div>
+       <ul class = "text" >
+       <br>
+        <p> <b>name :</b> Uranus</p>
+        <p><b>info" :</b>The seventh planet from the sun, Uranus is an oddball. It’s the only giant planet whose equator is nearly at right angles to its orbit — it basically orbits on its side. Astronomers think the planet collided with some other planet-size object long ago, causing the tilt. The tilt causes extreme seasons that last 20-plus years, and the sun beats down on one pole or the other for 84 Earth-years. Uranus is about the same size as Neptune. Methane in the atmosphere gives Uranus its blue-green tint. It has numerous moons and faint rings.</p>
+        <p><b>Discovery :</b> 1781 by William Herschel (was thought previously to be a star)</p>
+        <p><b>NamedFor :</b> Personification of heaven in ancient myth</p>
+        <p><b>Diameter :</b> 31,763 miles (51,120 km)</p>
+        <p><b>Orbit :</b> 84 Earth years</p>
+        <p><b>Day :</b> 18 Earth hours</p>
+          <br>
+      </ul>
+
+      <div style="height:50%;width:50%;margin-left: 20%"></div>
+
+      <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="98deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/uranus.png" class="jupiter planet"></div>
+      <ul class = "text" >
+      <br>
+       <p> <b>name :</b> Neptune</p>
+       <p>info : The eighth planet from the sun, Neptune is known for strong winds — sometimes faster than the speed of sound. Neptune is far out and cold. The planet is more than 30 times as far from the sun as Earth. It has a rocky core. Neptune was the first planet to be predicted to exist by using math, before it was detected. Irregularities in the orbit of Uranus led French astronomer Alexis Bouvard to suggest some other might be exerting a gravitational tug. German astronomer Johann Galle used calculations to help find Neptune in a telescope. Neptune is about 17 times as massive as Earth.</p>
+       <p> <b>Discovery :</b> 1846</p>
+       <p> <b>Named For :</b> Roman god of water</p>
+       <p><b>Diameter :</b> 30,775 miles (49,530 km)</p>
+       <p><b>Orbit :</b> 165 Earth years</p>
+       <p><b>Day :</b> 19 Earth hours</p>
+         <br>
+     </ul>
 
     <!-- <div style="height:50%;width:50%;margin-left: 20%"></div>
--->
-<div ng-click="info(9)" style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="30deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/neptune.jpg" class="jupiter planet"></div>
-<ul style="font-size: 18px">
-    <li> name" : "Pluto (Dwarf Planet)</li>
-    <li>info" :"Once the ninth planet from the sun, Pluto is unlike other planets in many respects. It is smaller than Earth's moon. Its orbit carries it inside the orbit of Neptune and then way out beyond that orbit. From 1979 until early 1999, Pluto had actually been the eighth planet from the sun. Then, on Feb. 11, 1999, it crossed Neptune's path and once again became the solar system's most distant planet — until it was demoted to dwarf planet status. Pluto will stay beyond Neptune for 228 years. Pluto’s orbit is tilted to the main plane of the solar system — where the other planets orbit — by 17.1 degrees. It’s a cold, rocky world with only a very ephemeral atmosphere. NASA's New Horizons mission performed history's first flyby of the Pluto system on July 14, 2015.</li>
-    <li>Discovery : 1930 by Clyde Tombaugh</li>
-    <li>NamedFor : Roman god of the underworld, Hades</li>
-    <li>Diameter : 1,430 miles (2,301 km)</li>
-    <li>Orbit : 248 Earth years</li>
-    <li>Day : 6.4 Earth day</li>
-</ul>
+  -->
+  <div  style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="30deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/neptune.jpg" class="jupiter planet"></div>
+  <ul  class = "text" >
+  <br>
+    <p> <b>name :</b> Pluto (Dwarf Planet)</p>
+    <p><b>info :</b> Once the ninth planet from the sun, Pluto is unlike other planets in many respects. It is smaller than Earth's moon. Its orbit carries it inside the orbit of Neptune and then way out beyond that orbit. From 1979 until early 1999, Pluto had actually been the eighth planet from the sun. Then, on Feb. 11, 1999, it crossed Neptune's path and once again became the solar system's most distant planet — until it was demoted to dwarf planet status. Pluto will stay beyond Neptune for 228 years. Pluto’s orbit is tilted to the main plane of the solar system — where the other planets orbit — by 17.1 degrees. It’s a cold, rocky world with only a very ephemeral atmosphere. NASA's New Horizons mission performed history's first flyby of the Pluto system on July 14, 2015.</p>
+    <p><b>Discovery :</b> 1930 by Clyde Tombaugh</p>
+    <p><b>Named For :</b> Roman god of the underworld, Hades</p>
+    <p><b>Diameter :</b> 1,430 miles (2,301 km)</p>
+    <p><b>Orbit :</b> 248 Earth years</p>
+    <p><b>Day :</b> 6.4 Earth day</p>
+    <br>
+  </ul>
 
-<div style="height:50%;width:50%;margin-left: 20%"></div>
 
-<div id="test"></div>
+<br>
 
-<script type="text/javascript">
+  <script type="text/javascript">
    var once=true;
    $(".planet").planetarium({
-      space: "html, body"
+    space: "html, body"
   });
    $(window).scroll(function() {
-       if(Math.abs($(window).scrollTop() + $(window).height() - $(document).height())<=10) {
-          if(once){
-              $('#test').append('<hr>');
-              console.log("bottom!");
-              once=false;
-          }
+     if(Math.abs($(window).scrollTop() + $(window).height() - $(document).height())<=10) {
+      if(once){
+        $('#test').append('<hr>');
+        console.log("bottom!");
+        once=false;
       }
+    }
   });
-=======
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Galactic Space</title>
-    	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
-    	<script type="text/javascript" src="js/jquery.planetarium.js"></script>
-    
-    	<link rel="stylesheet" type="text/css" href="css/planetarium.css" />
-		
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		
-	</head>
-	<body>
-		<div class="container">
-			
-
-			<div class="header">
-				<h1>Galactic Space</h1>	
-			</div>
-
-			<div class="menu">
-				
-				<a class="active" href="index.html">Solar System</a>
-				<a href="index.html">Blog</a>
-			</div>
-		
-    	<!-- <div class="main"> -->
-    	  <!-- <div data-ptr-autospin="400ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/texture-jupiter.jpg" class="jupiter planet"></div>
-    	  <div data-ptr-autospin="5000ms" data-ptr-angle="10deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="500x500" data-ptr-pattern="img/texture-earth.jpg" class="earth planet"></div> -->
-        
-        <div class="sun"><img src="img/580b585b2edbce24c47b2714.png" style="width:90%;height: 90%;" ></div>
-        <div ></div>
-
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="38x38" data-ptr-pattern="img/mercury.jpg" class="jupiter planet"></div>
-        <div ></div>
-        
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="95x95" data-ptr-pattern="img/venus.jpg" class="jupiter planet"></div>
-        <div ></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/earth.jpg" class="jupiter planet"></div>
-        <div ></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="53x53" data-ptr-pattern="img/mars.jpg" class="jupiter planet"></div>
-        <div ></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="300x300" data-ptr-pattern="img/Jupiter.jpg" class="jupiter planet"></div>
-        <div ></div>
-
-
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-size="200x200" data-ptr-pattern="img/saturn2.png" data-ptr-ring="true" data-ptr-ringColor="linear-gradient(#b77138,grey,#513f00)" data-ptr-ringAngle= "-18deg" class="saturn planet"></div>
-        <div ></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/uranus.png" class="jupiter planet"></div>
-        <div ></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="40deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/neptune.jpg" class="jupiter planet"></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="17590ms" data-ptr-angle="0deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="38x38" data-ptr-pattern="img/mercury.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="11675ms" data-ptr-angle="-3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="95x95" data-ptr-pattern="img/venus.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="4800ms" data-ptr-angle="23.5deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/earth.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="4900ms" data-ptr-angle="25deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="53x53" data-ptr-pattern="img/mars.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="300x300" data-ptr-pattern="img/Jupiter.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-size="200x200" data-ptr-pattern="img/saturn2.png" data-ptr-ring="true" data-ptr-ringColor="linear-gradient(#b77138,grey,#513f00)" data-ptr-ringAngle= "-18deg" class="saturn planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="98deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/uranus.png" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-        <div style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="30deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/neptune.jpg" class="jupiter planet"></div>
-
-        <div style="height:50%;width:50%;margin-left: 20%"><h2>Jupiter</h2><p>Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two and a half times that of all the other planets in the Solar System combined. Jupiter is a gas giant, along with Saturn, with the other two giant planets, Uranus and Neptune, being ice giants.</p></div>
-
-
-        <div id="test"></div>
-        
-    	<script type="text/javascript">
-    	var once=true;
-        $(".planet").planetarium({
-          space: "html, body"
-        });
-        $(window).scroll(function() {
-   		if(Math.abs($(window).scrollTop() + $(window).height() - $(document).height())<=10) {
-   			if(once){
-   			$('#test').append('<hr>');
-       		console.log("bottom!");
-       		once=false;
-       		}
-   		}
-});
-
-        // $(".sun").planetarium({
-        //   autospin: "0ms",
-        //   angle: "10deg",
-        //   glow: "0 0 100px rgba(255,0,0,0.55), inset 0px 0px 0px rgba(0,0,0,0.5)",
-        //   size: "1000x1000",
-        //   pattern: "img/x-class-solar-flare-january-7-2014.jpg",
-        //   space: "html, body"
-        // });
-    </script>
-</div>
-<script src="controller/app.js"></script>
-<script src="controller/contoller.js"></script>
-</body>
-</html>
+</script>
