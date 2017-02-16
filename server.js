@@ -1,19 +1,22 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var planetRouter = require('./router.js');
-var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/Solar');
 
 
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + "/client"));
 
-app.use('/api/planets', planetRouter);
+// app.get('/', function(request, response) {
+//   response.render('index');
+// });
+
+// app.get('/' , function(request , response){
+// 	response.send('hahahahhaha')
+// })
 
 
  
