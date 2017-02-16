@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/Solar');
 
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + "./client"));
+app.use(express.static(__dirname + "/client"));
 
 app.use('/api/planets', planetRouter);
 
