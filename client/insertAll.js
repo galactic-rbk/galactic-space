@@ -10,14 +10,13 @@ var insertAllplanets = function() {
 //TODO: Insert all planets into your mongodb using planetsController
 
 	console.log(data);
-	planetsController.insert(data, function(err, result){
-		if(err) throw err;
-		console.log(result);
-	})
+	for (var i = 0; i < data.length; i++) {
+		planetsController.insert(data[i], function(err, result){
+			if(err) throw err;
+			console.log(result);
+		})
+	
+	}
 	
 }
-
-
-
-
 insertAllplanets()
