@@ -12,5 +12,10 @@ router.route('/')
 		 });
 
 	});
+
+router.route('/space_qna/main.html')
+		.get(function(req,res){
+			res.status(200)
+		})
  
 module.exports = router;
