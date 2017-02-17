@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon" type="image/png" href="http://curious.astro.cornell.edu/favicon.ico"/>
 <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
  <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -10,7 +11,6 @@
 <body style="width: 80%; margin: 0 auto; background: url('./img/stardust.jpg') ;color:white">
 <script type="text/javascript" src= "/controller/news.js"></script>
 <div class="header">
-    <h1>Galactic Space</h1>	
   </div>
  <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -18,8 +18,8 @@
       <a class="navbar-brand" href="index.html">Galactic space</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Solar System</a></li>
-      <li><a href="news.html">News</a></li>
+      <li><a href="index.html">Solar System</a></li>
+      <li class="active"><a href="news.html">News</a></li>
       <li><a href="index2.html" >Posts</a></li>
     </ul>
   </div>
@@ -29,7 +29,9 @@
 <div ng-app="myApp" ng-controller="myCtrl" style="background-color: #ffffff;
     opacity: 0.7;">
     <br>
-<a class="text1" ng-repeat-start="x in news" href={{x.data.url}}> <img class= "pic" ng-src="{{x.data.thumbnail}}" onerror="this.src='img/def.jpg'"\> <br>{{x.data.title}}</a><br><br ng-repeat-end />
+<a class="text1" target='_blank' ng-repeat-start="x in news" style='margin-left:30px' href={{x.data.url}}> <div><img style='margin-left:30px' class= "pic" ng-src="{{x.data.thumbnail}}" target='_blank' onerror="this.src='img/def.jpg'"\>
+ <div style=" margin-left: 30px"><br>{{x.data.title}}</div></div> <br></a><br><hr><br ng-repeat-end />
+
 </div>
 </body>
 </html>

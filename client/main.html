@@ -1,6 +1,14 @@
+<div ng-click='chttgls=false'>
+
 <div ng-init="init()"></div>
-<span ng-if='authData'>Currently logged in as:<img height='20' width='20' src='https://twitter.com/{{authData.twitter.username}}/profile_image?size=original '/>{{authData.twitter.username}}</span>
-<div ng-if='authData'><button class="btn btn-danger" ng-click="logout()">Log Out</button></div>
+<span ng-if='authData'>
+
+
+<div class='polaroid'><a target="_blank" href='https://twitter.com/{{authData.twitter.username}}/'><img height='100' width='100' title="{{authData.twitter.username}}" src='https://twitter.com/{{authData.twitter.username}}/profile_image?size=original '/></a></div>
+<b>{{authData.twitter.username}}</b></span>
+
+<div style='right: 100px;margin-top:-50px;position: absolute;' ng-if='authData'><button class="btn btn-danger" ng-click="logout()">Sign Out</button></div>
+
 <div ng-if='!authData'>
      <form>
         <div class="form-group">
@@ -16,7 +24,7 @@
         <input ng-model="signd.human" type="text" class="form-control" placeholder="{{human()}}" id='human'>
         </div>
         <br>
-        <button class="btn btn-primary btn-block" ng-click="login(signd)">Login</button>
+        <button class="btn btn-primary btn-block" ng-click="login(signd)">Sign In</button>
         <br>
         <button ng-click="signup(signd)" class="btn btn-primary btn-block">Sign Up</button>
     </form>
@@ -45,7 +53,7 @@
 <div class="panel panel-primary" ng-if = "post.kind==='post'" ng-repeat="post in posts">
     
     <div class="panel body">
-    <h2><a ng-href="{{post.url}}" target="_blank"><img height='30' width='30' src='https://twitter.com/{{post.user}}/profile_image?size=original '/>{{post.name}}</a></h2>
+    <h2><a target="_blank" href='https://twitter.com/{{post.user}}/'><img height='40' width='40' title="{{post.user}}" src='https://twitter.com/{{post.user}}/profile_image?size=normal '/></a><a ng-href="{{post.url}}" target="_blank">{{post.name}}</a></h2>
     <p style="color: black;">{{post.description}}</p>
     
     <span style='color: black;font-size: 20px'>{{post.votes}} Votes</span>
@@ -60,12 +68,12 @@
     
     <div class="panel panel-default" ng-repeat="comment in comments" ng-if='comment.owner===post.$id'>
         <div class="panel-body">
-            <a ng-href="https://twitter.com/{{comment.user}}" target="_blank"><img height='20' width='20' src='https://twitter.com/{{comment.user}}/profile_image?size=original '/> {{comment.user}}</a>
+            <a ng-href="https://twitter.com/{{comment.user}}" target="_blank"><img title="{{comment.user}}" height='20' width='20' src='https://twitter.com/{{comment.user}}/profile_image?size=normal '/> {{comment.user}}</a>
         </div>
         <div style='color:black;' class="panel-footer">
             {{comment.text}}
             <br>
-            <button class="btn btn-danger" ng-if='ChkUsrCom(comment)' ng-click="removeComment(post, comment)">Remove Comment</button>
+            <button class="btn btn-danger btn-xs" ng-if='ChkUsrCom(comment)' ng-click="removeComment(post, comment)">Remove Comment</button>
         </div>
     </div>
     <form>
@@ -78,7 +86,53 @@
     </form>
 </div>
 <br>
+</div>
+<div style=' z-index: 99 !important;position: fixed;bottom: 0;left:0;' class='chat'>
+<div ng-if='chttgls' style="background: white;
+    border: 1px solid cyan ;
+    border-radius: 4px;
+    padding: 2px;
+    height: 300px;
+    width: 200px;">
+        
+        <div ng-repeat="chat in chats | startFrom:(chats.length-60)+(currentPage*pageSize) | limitTo:pageSize" >
+        <div >
+            <a ng-href="https://twitter.com/{{chat.user}}" target="_blank"><img title="{{chat.user}}" height='20' width='20' src='https://twitter.com/{{chat.user}}/profile_image?size=normal '/>{{chat.user}}</a>
+        </div>
+        <div style='color:black;font-size: 10px'>
+            {{chat.text}} <div style='left: 170px;margin-top:-30px;position: absolute;color: grey'>{{chat.time}}</div>
+        </div>
+        
+    </div>
+        <div style='color: black;position: absolute;bottom: 87px;'>
+         <button ng-disabled="currentPage == 0" ng-click="pages(0)" class="btn btn-primary btn-xs">←</button>
+         {{currentPage+1}}/{{numberOfPages()}}
+         <button ng-disabled="currentPage >= data.length/pageSize - 1" style='margin-left:100px' ng-click="pages(1)" class="btn btn-primary btn-xs">→</button>
+         </div>
+        <form style='position: absolute;bottom: 43px;'>
+        <div class="input-group">
+            <input ng-model="chat.text" class="form-control">
+            <div class="input-group-btn">
+                <button ng-click="addChat(chat)" class="btn btn-success ">Send</button>
+            </div>
+        </div>
+    </form>
+
+    </div>
+<button ng-if='authData' ng-click='chttgl()' class="btn btn-success">Chats</button></div>
+<style type="text/css">
+   img {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+img:hover {
+    box-shadow: 0 0 5px 1px rgba(0, 140, 186, 0.5);
+}
 
 
+</style>
 
 
