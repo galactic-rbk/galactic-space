@@ -16,11 +16,11 @@ galactic-space
 You can start using this website by running "node server.js" locally then open the browser and write local host with port 3000 on browser, or "heroku open" to run the production version on heroku website.
 
 ## Requirements
-Node 0.10.x
-Angular
-Bootstrap
-firebase
-Express
+- Node 0.10.x
+- Angular
+- Bootstrap
+- firebase
+- Express
 
 ## Development
 From within the root directory:
