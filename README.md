@@ -2,9 +2,9 @@
 galactic-space
 
 ## Team
-Product Owner: Ahmad Alhasan
-Scrum Master: Ola Al khateeb 
-Development Team Members: Dania Hamdan, Waleed Nemreeny
+- Product Owner: Ahmad Alhasan
+- Scrum Master: Ola Al khateeb 
+- Development Team Members: Dania Hamdan, Waleed Nemreeny
 
 ## Table of Contents
 - Usage
